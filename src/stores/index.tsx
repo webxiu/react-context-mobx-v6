@@ -1,10 +1,14 @@
-import { createContext, useContext } from "react";
+import React, { createContext, useContext } from "react";
 import Goods from "./goods";
 import User from "./user";
 
+interface Props {
+  children?: React.ReactNode
+}
+
 class RootStore {
-  user;
-  goods;
+  user: User;
+  goods: Goods;
   constructor() {
     this.user = new User();
     this.goods = new Goods();
@@ -15,7 +19,7 @@ const rootStore = new RootStore();
 const ContextStore = createContext(rootStore)
 
 // 提供组件
-const RootStoreProvider = ({ children }) => {
+const RootStoreProvider: React.FC<Props> = ({ children }) => {
   return (
     <ContextStore.Provider value={rootStore}>
       {children}
