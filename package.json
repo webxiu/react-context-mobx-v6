@@ -1,8 +1,9 @@
 {
   "name": "react-context-mobox",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "types": "./types/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,13 +11,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "antd": "^5.15.3",
     "mobx": "^6.11.0",
     "mobx-react": "^9.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "6"
+    "react-router-dom": "6",
+    "styled-jsx": "^5.1.2"
   },
   "devDependencies": {
+    "@types/node": "^20.11.28",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
