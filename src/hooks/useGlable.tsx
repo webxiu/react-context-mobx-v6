@@ -6,6 +6,10 @@ interface RouterData {
   to: Location;
 }
 
+/**
+ * 路由监听钩子
+ * @param cb 执行回调
+ */
 export function useRouteChange(cb: (data: RouterData) => void) {
   const location = useLocation();
   const lastPath = useRef<Partial<Location>>({});

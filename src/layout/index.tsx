@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { menus } from "@/router";
-import { useEffect } from "react";
 import { getLoginInfo, removeLoginInfo } from "@/utils/storage";
 import { useNavigate } from "react-router-dom";
 import { useRouteChange } from "@/hooks/useGlable";
@@ -12,14 +11,12 @@ function Layout() {
   useRouteChange(({ from, to }) => {
     console.log("form", from.pathname);
     console.log(`to: ${to.pathname}`);
-  });
 
-  useEffect(() => {
     const loginInfo = getLoginInfo();
     if (loginInfo.username !== "Hailen") {
       navigate("/login");
     }
-  }, []);
+  });
 
   function onClear() {
     removeLoginInfo();
