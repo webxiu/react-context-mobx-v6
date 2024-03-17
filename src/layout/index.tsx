@@ -2,17 +2,28 @@ import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { menus } from "@/router";
 import { useEffect } from "react";
-import { getLoginInfo } from "@/utils/storage";
+import { getLoginInfo, removeLoginInfo } from "@/utils/storage";
 import { useNavigate } from "react-router-dom";
+import { useRouteChange } from "@/hooks/useGlable";
 
 function Layout() {
   const navigate = useNavigate();
+
+  useRouteChange(({ from, to }) => {
+    console.log("form", from.pathname);
+    console.log(`to: ${to.pathname}`);
+  });
+
   useEffect(() => {
     const loginInfo = getLoginInfo();
     if (loginInfo.username !== "Hailen") {
       navigate("/login");
     }
   }, []);
+
+  function onClear() {
+    removeLoginInfo();
+  }
 
   return (
     <div>
@@ -27,7 +38,12 @@ function Layout() {
             </Link>
           ))}
         </div>
-        <Link to={"/login"}>退出</Link>
+        <div>
+          <Link to={"/login"}>退出</Link> &nbsp;&nbsp;
+          <a href="#" onClick={onClear}>
+            清空缓存
+          </a>
+        </div>
       </div>
       <div>
         <Outlet />

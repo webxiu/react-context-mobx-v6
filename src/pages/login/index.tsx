@@ -8,15 +8,6 @@ function Login() {
   const [coutdown, setCoutdown] = useState(3);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const onLogin = () => {
-    const params: LoginInfoType = {
-      username: "Hailen",
-      password: "300700635",
-    };
-    setLoading(true);
-    setLoginInfo(params);
-    timer = setInterval(() => setCoutdown((x) => --x), 1000);
-  };
 
   useEffect(() => {
     if (coutdown <= 0) {
@@ -25,6 +16,16 @@ function Login() {
       setLoading(false);
     }
   }, [coutdown]);
+
+  function onLogin() {
+    const params: LoginInfoType = {
+      username: "Hailen",
+      password: "300700635",
+    };
+    setLoading(true);
+    setLoginInfo(params);
+    timer = setInterval(() => setCoutdown((x) => --x), 1000);
+  }
 
   return (
     <div style={{ textAlign: "center" }}>
