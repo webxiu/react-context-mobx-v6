@@ -1,5 +1,4 @@
 import { makeAutoObservable } from "mobx";
-import { observer } from "mobx-react";
 
 class User {
   name = "张三";
